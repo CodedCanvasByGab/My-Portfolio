@@ -117,7 +117,11 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 font-sans ${
+      style={{
+        fontFamily:
+          "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      }}
+      className={`min-h-screen transition-colors duration-300 ${
         isDark ? "bg-[#0B192C] text-slate-100" : "bg-[#F8F9FA] text-[#0B192C]"
       }`}
     >
