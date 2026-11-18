@@ -138,20 +138,20 @@ export const CREDENTIALS_DATA = [
     category: "Work & Technical Experience",
     items: [
       {
-        role: "Technical Support & Systems Specialist",
-        organization: "Enterprise IT & Client Services",
+        role: "Technical Support Intern",
+        organization: "Fil-Global Immigration Services",
         description:
-          "Diagnosed and resolved hardware issues, assembled custom computing rigs, deployed software stacks, and wrote user guides reducing recurring support tickets by 40%.",
+          "Resolved employee IT support tickets, provisioned and configured company work devices, maintained hardware asset inventory records, and provided day-to-day technical troubleshooting across the organization.",
       },
       {
         role: "Frontend & UI/UX Developer",
-        organization: "Independent / Digital Agency",
+        organization: "Independent",
         description:
           "Built intuitive web interfaces in React and Tailwind CSS, translated Figma concepts into responsive components, and maintained detailed documentation.",
       },
       {
         role: "Interactive Unity Developer & QA",
-        organization: "Creative Tech Lab",
+        organization: "Independent",
         description:
           "Programmed backend C# interactive logic in Unity 2D/3D, conducted extensive playtesting and bug diagnostics, and authored QA runbooks.",
       },
@@ -164,23 +164,22 @@ export const CREDENTIALS_DATA = [
       {
         role: "Bachelor of Science in Information Technology",
         organization: "College of Information and Communications Technology",
-        period: "Graduated",
-        description:
-          "Specialization in Systems Administration, Interactive Media, and Software Engineering.",
+        period: "Ongoing",
+        description: "Specialization in Multimedia Arts and Animation.",
       },
       {
-        role: "PC Hardware Diagnostics & Assembly Certification",
-        organization: "Hardware Technical Guild",
+        role: "Project Management Ready",
+        organization: "Project Management Institute (PMI)",
         period: "Verified",
         description:
-          "Certified in component selection, motherboard architecture, BIOS configuration, and preventative maintenance.",
+          "Certified to have an understanding of the concepts within the growing field of project management, including project lifecycle, stakeholder management, and risk assessment.",
       },
       {
-        role: "Technical Documentation & Systems QA Specialist",
-        organization: "Software Documentation Standard Institute",
+        role: "Unity VR Development and Game Development",
+        organization: "Unity Technologies",
         period: "Verified",
         description:
-          "Trained in SRS authoring, user-centric handbook design, and structured QA testing frameworks.",
+          "Badges earned for completing Unity's VR Development and Game Development courses, demonstrating proficiency in interactive 3D environments, C# scripting, and game mechanics.",
       },
     ],
   },

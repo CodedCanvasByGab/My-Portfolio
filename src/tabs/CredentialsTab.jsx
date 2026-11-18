@@ -4,17 +4,17 @@ import { CREDENTIALS_DATA } from "../data";
 
 export default function CredentialsTab({ isDark }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <div>
         <h1
-          className={`text-3xl sm:text-4xl font-black tracking-tight ${
+          className={`text-4xl sm:text-5xl font-black tracking-tight ${
             isDark ? "text-white" : "text-[#0B192C]"
           }`}
         >
           Credentials & Experience
         </h1>
         <p
-          className={`text-sm mt-1 ${
+          className={`text-base mt-1 ${
             isDark ? "text-slate-400" : "text-slate-600"
           }`}
         >
@@ -22,31 +22,35 @@ export default function CredentialsTab({ isDark }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Vertically stacked sections */}
+      <div className="flex flex-col gap-12">
         {CREDENTIALS_DATA.map((section, idx) => (
-          <div key={idx} className="space-y-4">
+          <div key={idx} className="space-y-5">
             <h2
-              className={`text-base font-bold uppercase tracking-wider flex items-center gap-2 ${
-                isDark ? "text-[#C8B594]" : "text-[#856D43]"
+              className={`text-base md:text-lg font-bold uppercase tracking-wider flex items-center gap-2.5 pb-2.5 border-b ${
+                isDark
+                  ? "text-[#C8B594] border-[#1E3656]"
+                  : "text-[#856D43] border-slate-200"
               }`}
             >
-              {idx === 0 ? <Briefcase size={16} /> : <Award size={16} />}
+              {idx === 0 ? <Briefcase size={20} /> : <Award size={20} />}
               {section.category}
             </h2>
 
-            <div className="space-y-4">
+            {/* Vertically stacked cards */}
+            <div className="flex flex-col gap-4">
               {section.items.map((item, itemIdx) => (
                 <div
                   key={itemIdx}
-                  className={`p-6 rounded-2xl border transition-all ${
+                  className={`p-6 md:p-7 rounded-2xl border transition-all ${
                     isDark
-                      ? "bg-[#11223A] border-[#1E3656]"
-                      : "bg-white border-slate-200 shadow-sm"
+                      ? "bg-[#11223A] border-[#1E3656] hover:border-[#1E3656]/80"
+                      : "bg-white border-slate-200 hover:border-slate-300 shadow-sm"
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                     <h3
-                      className={`text-base font-bold ${
+                      className={`text-lg md:text-xl font-bold ${
                         isDark ? "text-white" : "text-[#0B192C]"
                       }`}
                     >
@@ -54,10 +58,10 @@ export default function CredentialsTab({ isDark }) {
                     </h3>
                     {item.period && (
                       <span
-                        className={`text-[11px] font-mono px-2 py-0.5 rounded ${
+                        className={`text-xs font-mono px-3 py-0.5 rounded-full ${
                           isDark
-                            ? "bg-[#0B192C] text-[#C8B594]"
-                            : "bg-slate-100 text-slate-700"
+                            ? "bg-[#0B192C] text-[#C8B594] border border-[#1E3656]"
+                            : "bg-slate-100 text-slate-700 border border-slate-200"
                         }`}
                       >
                         {item.period}
@@ -65,14 +69,14 @@ export default function CredentialsTab({ isDark }) {
                     )}
                   </div>
                   <p
-                    className={`text-xs font-medium mb-3 ${
-                      isDark ? "text-slate-400" : "text-slate-500"
+                    className={`text-sm font-semibold mb-3 ${
+                      isDark ? "text-[#C8B594]" : "text-[#7C663D]"
                     }`}
                   >
                     {item.organization}
                   </p>
                   <p
-                    className={`text-xs leading-relaxed ${
+                    className={`text-sm md:text-base leading-relaxed ${
                       isDark ? "text-slate-300" : "text-slate-600"
                     }`}
                   >

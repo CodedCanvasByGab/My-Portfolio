@@ -51,14 +51,14 @@ export default function ContactTab({ isDark }) {
     <div className="space-y-8">
       <div>
         <h1
-          className={`text-3xl sm:text-4xl font-black tracking-tight ${
+          className={`text-4xl sm:text-5xl font-black tracking-tight ${
             isDark ? "text-white" : "text-[#0B192C]"
           }`}
         >
           Get in Touch
         </h1>
         <p
-          className={`text-sm mt-1 ${
+          className={`text-base mt-1 ${
             isDark ? "text-slate-400" : "text-slate-600"
           }`}
         >
@@ -84,16 +84,20 @@ export default function ContactTab({ isDark }) {
                     : "bg-slate-100 text-[#0B192C]"
                 }`}
               >
-                <Mail size={18} />
+                <Mail size={20} />
               </div>
               <div>
                 <p
-                  className={`text-xs font-medium ${isDark ? "text-slate-400" : "text-slate-500"}`}
+                  className={`text-sm font-medium ${
+                    isDark ? "text-slate-400" : "text-slate-500"
+                  }`}
                 >
                   Direct Email
                 </p>
                 <p
-                  className={`text-xs font-bold ${isDark ? "text-white" : "text-[#0B192C]"}`}
+                  className={`text-sm font-bold ${
+                    isDark ? "text-white" : "text-[#0B192C]"
+                  }`}
                 >
                   lheegabriel.hosena@gmail.com
                 </p>
@@ -102,7 +106,7 @@ export default function ContactTab({ isDark }) {
 
             <button
               onClick={copyEmail}
-              className={`w-full mt-2 py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 border transition-all cursor-pointer ${
+              className={`w-full mt-2 py-2.5 px-3.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border transition-all cursor-pointer ${
                 copied
                   ? "bg-emerald-600 border-emerald-600 text-white"
                   : isDark
@@ -112,11 +116,11 @@ export default function ContactTab({ isDark }) {
             >
               {copied ? (
                 <>
-                  <CheckCircle size={14} /> Copied to Clipboard!
+                  <CheckCircle size={16} /> Copied to Clipboard!
                 </>
               ) : (
                 <>
-                  <Copy size={14} /> Copy Email Address
+                  <Copy size={16} /> Copy Email Address
                 </>
               )}
             </button>
@@ -130,14 +134,14 @@ export default function ContactTab({ isDark }) {
             }`}
           >
             <h4
-              className={`text-xs font-bold uppercase tracking-wider mb-2 ${
+              className={`text-sm font-bold uppercase tracking-wider mb-2 ${
                 isDark ? "text-[#C8B594]" : "text-[#856D43]"
               }`}
             >
               Availability
             </h4>
             <p
-              className={`text-xs leading-relaxed ${
+              className={`text-sm leading-relaxed ${
                 isDark ? "text-slate-300" : "text-slate-600"
               }`}
             >
@@ -160,19 +164,23 @@ export default function ContactTab({ isDark }) {
                 <CheckCircle size={28} />
               </div>
               <h3
-                className={`text-lg font-bold ${isDark ? "text-white" : "text-[#0B192C]"}`}
+                className={`text-xl font-bold ${
+                  isDark ? "text-white" : "text-[#0B192C]"
+                }`}
               >
                 Message Received!
               </h3>
               <p
-                className={`text-xs max-w-sm mx-auto ${isDark ? "text-slate-400" : "text-slate-600"}`}
+                className={`text-sm max-w-sm mx-auto ${
+                  isDark ? "text-slate-400" : "text-slate-600"
+                }`}
               >
                 Thank you for reaching out. I will respond to your message
                 promptly.
               </p>
               <button
                 onClick={() => setFormSubmitted(false)}
-                className={`mt-4 px-4 py-2 rounded-full text-xs font-semibold cursor-pointer ${
+                className={`mt-4 px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer ${
                   isDark
                     ? "bg-[#1E3656] text-white"
                     : "bg-slate-100 text-[#0B192C]"
@@ -184,7 +192,7 @@ export default function ContactTab({ isDark }) {
           ) : (
             <form onSubmit={handleFormSubmit} className="space-y-4">
               {submitError && (
-                <div className="p-3 rounded-xl text-xs bg-rose-500/10 border border-rose-500/30 text-rose-400">
+                <div className="p-3 rounded-xl text-sm bg-rose-500/10 border border-rose-500/30 text-rose-400">
                   {submitError}
                 </div>
               )}
@@ -192,7 +200,9 @@ export default function ContactTab({ isDark }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label
-                    className={`text-xs font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}
+                    className={`text-sm font-medium ${
+                      isDark ? "text-slate-300" : "text-slate-700"
+                    }`}
                   >
                     Your Name
                   </label>
@@ -201,7 +211,7 @@ export default function ContactTab({ isDark }) {
                     type="text"
                     name="name"
                     placeholder="Enter your name here..."
-                    className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
+                    className={`w-full px-4 py-3 rounded-xl text-sm border outline-none ${
                       isDark
                         ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
                         : "bg-slate-50 border-slate-200 text-[#0B192C]"
@@ -210,7 +220,9 @@ export default function ContactTab({ isDark }) {
                 </div>
                 <div className="space-y-1.5">
                   <label
-                    className={`text-xs font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}
+                    className={`text-sm font-medium ${
+                      isDark ? "text-slate-300" : "text-slate-700"
+                    }`}
                   >
                     Email Address
                   </label>
@@ -219,7 +231,7 @@ export default function ContactTab({ isDark }) {
                     type="email"
                     name="email"
                     placeholder="Enter your email here..."
-                    className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
+                    className={`w-full px-4 py-3 rounded-xl text-sm border outline-none ${
                       isDark
                         ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
                         : "bg-slate-50 border-slate-200 text-[#0B192C]"
@@ -230,13 +242,15 @@ export default function ContactTab({ isDark }) {
 
               <div className="space-y-1.5">
                 <label
-                  className={`text-xs font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}
+                  className={`text-sm font-medium ${
+                    isDark ? "text-slate-300" : "text-slate-700"
+                  }`}
                 >
                   Topic / Inquiry
                 </label>
                 <select
                   name="topic"
-                  className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none cursor-pointer ${
+                  className={`w-full px-4 py-3 rounded-xl text-sm border outline-none cursor-pointer ${
                     isDark
                       ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
                       : "bg-slate-50 border-slate-200 text-[#0B192C]"
@@ -252,7 +266,9 @@ export default function ContactTab({ isDark }) {
 
               <div className="space-y-1.5">
                 <label
-                  className={`text-xs font-medium ${isDark ? "text-slate-300" : "text-slate-700"}`}
+                  className={`text-sm font-medium ${
+                    isDark ? "text-slate-300" : "text-slate-700"
+                  }`}
                 >
                   Message
                 </label>
@@ -261,7 +277,7 @@ export default function ContactTab({ isDark }) {
                   required
                   name="message"
                   placeholder="Tell me a bit about your project or what you need assistance with..."
-                  className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none resize-none ${
+                  className={`w-full px-4 py-3 rounded-xl text-sm border outline-none resize-none ${
                     isDark
                       ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
                       : "bg-slate-50 border-slate-200 text-[#0B192C]"
@@ -272,13 +288,13 @@ export default function ContactTab({ isDark }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer ${
+                className={`w-full py-3.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer ${
                   isDark
                     ? "bg-[#C8B594] text-[#0B192C] hover:bg-[#d8c7a8]"
                     : "bg-[#0B192C] text-white hover:bg-[#162a45]"
                 } ${isSubmitting ? "opacity-60 cursor-not-allowed" : ""}`}
               >
-                <Send size={14} />
+                <Send size={15} />
                 {isSubmitting ? "Sending message..." : "Send Message"}
               </button>
             </form>

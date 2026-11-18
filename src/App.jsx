@@ -14,25 +14,29 @@ import WorkTab from "./tabs/WorkTab";
 
 const TAB_ORDER = ["home", "work", "skills", "credentials", "contact"];
 
+// Longer, silky-smooth horizontal slide variants
 const pageVariants = {
   initial: (dir) => ({
     opacity: 0,
-    x: dir > 0 ? 80 : -80,
+    x: dir > 0 ? 120 : -120,
+    filter: "blur(4px)",
   }),
   animate: {
     opacity: 1,
     x: 0,
+    filter: "blur(0px)",
     transition: {
-      x: { type: "spring", stiffness: 320, damping: 32 },
-      opacity: { duration: 0.25, ease: "easeOut" },
+      duration: 0.45,
+      ease: [0.16, 1, 0.3, 1], // Apple-style smooth deceleration
     },
   },
   exit: (dir) => ({
     opacity: 0,
-    x: dir > 0 ? -80 : 80,
+    x: dir > 0 ? -120 : 120,
+    filter: "blur(4px)",
     transition: {
-      x: { type: "spring", stiffness: 320, damping: 32 },
-      opacity: { duration: 0.18, ease: "easeIn" },
+      duration: 0.32,
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
@@ -98,7 +102,7 @@ export default function App() {
         navigateTo={navigateTo}
       />
 
-      <main className="max-w-6xl mx-auto px-6 py-12 md:py-16 min-h-[calc(100vh-160px)] flex flex-col overflow-x-clip">
+      <main className="max-w-6xl mx-auto px-6 py-12 md:py-16 min-h-[calc(100vh-160px)] flex flex-col overflow-x-hidden">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={activeTab}
@@ -107,6 +111,7 @@ export default function App() {
             initial="initial"
             animate="animate"
             exit="exit"
+            className="w-full"
           >
             {activeTab === "home" && (
               <HomeTab isDark={isDark} navigateTo={navigateTo} />

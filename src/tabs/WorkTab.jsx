@@ -24,14 +24,14 @@ export default function WorkTab({ isDark, onSelectProject }) {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1
-            className={`text-3xl sm:text-4xl font-black tracking-tight ${
+            className={`text-4xl sm:text-5xl font-black tracking-tight ${
               isDark ? "text-white" : "text-[#0B192C]"
             }`}
           >
             Projects & Case Studies
           </h1>
           <p
-            className={`text-sm mt-1 ${
+            className={`text-base mt-1 ${
               isDark ? "text-slate-400" : "text-slate-600"
             }`}
           >
@@ -51,7 +51,7 @@ export default function WorkTab({ isDark, onSelectProject }) {
             <button
               key={filter.id}
               onClick={() => setWorkFilter(filter.id)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
                 workFilter === filter.id
                   ? isDark
                     ? "bg-[#C8B594] text-[#0B192C] font-semibold"
@@ -82,7 +82,7 @@ export default function WorkTab({ isDark, onSelectProject }) {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span
-                  className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${
+                  className={`text-sm font-semibold px-3 py-1 rounded-full border ${
                     isDark
                       ? "bg-[#0B192C] text-[#C8B594] border-[#1E3656]"
                       : "bg-slate-100 text-[#7C663D] border-slate-200"
@@ -91,24 +91,24 @@ export default function WorkTab({ isDark, onSelectProject }) {
                   {project.categoryLabel}
                 </span>
                 <div
-                  className={`p-1.5 rounded-full ${
+                  className={`p-2 rounded-full ${
                     isDark
                       ? "bg-[#0B192C] text-slate-400"
                       : "bg-slate-100 text-slate-600"
                   }`}
                 >
-                  <ExternalLink size={13} />
+                  <ExternalLink size={14} />
                 </div>
               </div>
               <h3
-                className={`text-xl font-bold mb-2 group-hover:text-[#C8B594] transition-colors ${
+                className={`text-2xl font-bold mb-2 group-hover:text-[#C8B594] transition-colors ${
                   isDark ? "text-white" : "text-[#0B192C]"
                 }`}
               >
                 {project.title}
               </h3>
               <p
-                className={`text-xs leading-relaxed mb-4 ${
+                className={`text-sm leading-relaxed mb-4 ${
                   isDark ? "text-slate-300" : "text-slate-600"
                 }`}
               >
@@ -117,14 +117,14 @@ export default function WorkTab({ isDark, onSelectProject }) {
             </div>
 
             <div className="pt-4 border-t border-slate-700/20 dark:border-[#1E3656] space-y-3">
-              <p className="text-[11px] font-mono text-[#C8B594]">
+              <p className="text-xs font-mono text-[#C8B594]">
                 • {project.impact}
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className={`text-[10px] px-2 py-0.5 rounded font-mono ${
+                    className={`text-xs px-2.5 py-1 rounded font-mono ${
                       isDark
                         ? "bg-[#0B192C] text-slate-300"
                         : "bg-slate-100 text-slate-700"
