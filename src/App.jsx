@@ -982,7 +982,7 @@ export default function App() {
                             required
                             type="text"
                             name="name"
-                            placeholder="Alex Morgan"
+                            placeholder="Type your name here..."
                             className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
                               isDark
                                 ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
@@ -1000,7 +1000,7 @@ export default function App() {
                             required
                             type="email"
                             name="email"
-                            placeholder="alex@example.com"
+                            placeholder="Type your email here..."
                             className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
                               isDark
                                 ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
