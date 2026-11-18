@@ -17,29 +17,44 @@ import {
   Send,
   Sun,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CREDENTIALS_DATA, PROJECTS, SKILL_DOMAINS } from "./data";
 import ProjectModal from "./projectModal";
 
+const TAB_ORDER = ["home", "work", "skills", "credentials", "contact"];
+
+// Directional slide variants:
+// direction > 0: Moving forward (Rightward in navbar) -> Slide content to the left
+// direction < 0: Moving backward (Leftward in navbar) -> Slide content to the right
 const pageVariants = {
-  initial: { opacity: 0, y: 12, scale: 0.995 },
+  initial: (dir) => ({
+    opacity: 0,
+    x: dir > 0 ? 80 : -80,
+  }),
   animate: {
     opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+    x: 0,
+    transition: {
+      x: { type: "spring", stiffness: 320, damping: 32 },
+      opacity: { duration: 0.25, ease: "easeOut" },
+    },
   },
-  exit: {
+  exit: (dir) => ({
     opacity: 0,
-    y: -8,
-    scale: 0.995,
-    transition: { duration: 0.2, ease: "easeInOut" },
-  },
+    x: dir > 0 ? -80 : 80,
+    transition: {
+      x: { type: "spring", stiffness: 320, damping: 32 },
+      opacity: { duration: 0.18, ease: "easeIn" },
+    },
+  }),
 };
 
 export default function App() {
   const [isDark, setIsDark] = useState(true);
   const [activeTab, setActiveTab] = useState("home");
+  const [direction, setDirection] = useState(1);
+  const activeTabRef = useRef("home");
+
   const [workFilter, setWorkFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -48,19 +63,42 @@ export default function App() {
   const [submitError, setSubmitError] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Sync ref with current tab state
+  useEffect(() => {
+    activeTabRef.current = activeTab;
+  }, [activeTab]);
+
+  // Handle browser back/forward buttons without breaking direction
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
-      if (["home", "work", "skills", "credentials", "contact"].includes(hash)) {
+      if (TAB_ORDER.includes(hash) && hash !== activeTabRef.current) {
+        const prevIdx = TAB_ORDER.indexOf(activeTabRef.current);
+        const nextIdx = TAB_ORDER.indexOf(hash);
+        setDirection(nextIdx > prevIdx ? 1 : -1);
+        activeTabRef.current = hash;
         setActiveTab(hash);
       }
     };
-    handleHashChange();
+
+    const initialHash = window.location.hash.replace("#", "");
+    if (TAB_ORDER.includes(initialHash)) {
+      activeTabRef.current = initialHash;
+      setActiveTab(initialHash);
+    }
+
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   const navigateTo = (tab) => {
+    if (tab === activeTabRef.current) return;
+    const currentIdx = TAB_ORDER.indexOf(activeTabRef.current);
+    const nextIdx = TAB_ORDER.indexOf(tab);
+    const newDir = nextIdx > currentIdx ? 1 : -1;
+
+    setDirection(newDir);
+    activeTabRef.current = tab;
     setActiveTab(tab);
     window.location.hash = tab;
     setMobileMenuOpen(false);
@@ -73,7 +111,6 @@ export default function App() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  // Real Formspree submission handler
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -120,14 +157,16 @@ export default function App() {
         fontFamily:
           "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
-      className={`min-h-screen transition-colors duration-300 ${isDark ? "bg-[#0B192C] text-slate-100" : "bg-[#F8F9FA] text-[#0B192C]"}`}
+      className={`min-h-screen overflow-x-hidden transition-colors duration-300 ${
+        isDark ? "bg-[#0B192C] text-slate-100" : "bg-[#F8F9FA] text-[#0B192C]"
+      }`}
     >
-      {/* HEADER / NAVIGATION BAR */}
+      {/* HEADER / NAVIGATION BAR (Frosted Glass) */}
       <header
-        className={`sticky top-0 z-40 backdrop-blur-md border-b transition-colors ${
+        className={`sticky top-0 z-40 backdrop-blur-xl backdrop-saturate-180 border-b transition-all duration-300 ${
           isDark
-            ? "bg-[#0B192C]/90 border-[#1E3656]"
-            : "bg-[#FFFFFF]/90 border-slate-200 shadow-sm"
+            ? "bg-[#0B192C]/55 border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.25)]"
+            : "bg-white/65 border-black/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -190,7 +229,7 @@ export default function App() {
               aria-label="Toggle Theme"
               className={`p-2.5 rounded-full border transition-all cursor-pointer ${
                 isDark
-                  ? "bg-[#11223A] border-[#1E3656] text-[#C8B594] hover:bg-[#193254]"
+                  ? "bg-[#11223A]/80 border-[#1E3656] text-[#C8B594] hover:bg-[#193254]"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-100 shadow-sm"
               }`}
             >
@@ -227,8 +266,8 @@ export default function App() {
           <div
             className={`md:hidden border-t px-6 py-4 flex flex-col gap-2 ${
               isDark
-                ? "bg-[#0B192C] border-[#1E3656]"
-                : "bg-white border-slate-200"
+                ? "bg-[#0B192C]/85 backdrop-blur-xl border-white/[0.08]"
+                : "bg-white/85 backdrop-blur-xl border-black/[0.06]"
             }`}
           >
             {["home", "work", "skills", "credentials", "contact"].map((tab) => (
@@ -253,12 +292,13 @@ export default function App() {
       </header>
 
       {/* MAIN CONTENT AREA */}
-      <main className="max-w-6xl mx-auto px-6 py-12 md:py-16 min-h-[calc(100vh-160px)] flex flex-col">
-        <AnimatePresence mode="wait">
+      <main className="max-w-6xl mx-auto px-6 py-12 md:py-16 min-h-[calc(100vh-160px)] flex flex-col overflow-x-hidden">
+        <AnimatePresence mode="wait" custom={direction}>
           {/* TAB 1: HOME */}
           {activeTab === "home" && (
             <motion.div
               key="home"
+              custom={direction}
               variants={pageVariants}
               initial="initial"
               animate="animate"
@@ -497,6 +537,7 @@ export default function App() {
           {activeTab === "work" && (
             <motion.div
               key="work"
+              custom={direction}
               variants={pageVariants}
               initial="initial"
               animate="animate"
@@ -622,6 +663,7 @@ export default function App() {
           {activeTab === "skills" && (
             <motion.div
               key="skills"
+              custom={direction}
               variants={pageVariants}
               initial="initial"
               animate="animate"
@@ -707,6 +749,7 @@ export default function App() {
           {activeTab === "credentials" && (
             <motion.div
               key="credentials"
+              custom={direction}
               variants={pageVariants}
               initial="initial"
               animate="animate"
@@ -758,7 +801,6 @@ export default function App() {
                             >
                               {item.role}
                             </h3>
-                            {/* Conditionally render date only if it exists */}
                             {item.period && (
                               <span
                                 className={`text-[11px] font-mono px-2 py-0.5 rounded ${
@@ -794,6 +836,7 @@ export default function App() {
           {activeTab === "contact" && (
             <motion.div
               key="contact"
+              custom={direction}
               variants={pageVariants}
               initial="initial"
               animate="animate"
@@ -939,7 +982,7 @@ export default function App() {
                             required
                             type="text"
                             name="name"
-                            placeholder="Type your name here"
+                            placeholder="Alex Morgan"
                             className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
                               isDark
                                 ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
@@ -957,7 +1000,7 @@ export default function App() {
                             required
                             type="email"
                             name="email"
-                            placeholder="provide your work or personal email here"
+                            placeholder="alex@example.com"
                             className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
                               isDark
                                 ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
