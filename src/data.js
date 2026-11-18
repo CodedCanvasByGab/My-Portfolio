@@ -3,51 +3,54 @@ import { FileText, Gamepad2, Layout, Palette, Wrench } from "lucide-react";
 export const PROJECTS = [
   {
     id: "asl-app",
-    title: "SignSnap: Real-time ASL Translator",
+    title: "SignSnap: Real-time ASL Gesture Recognition",
     category: "systems",
-    categoryLabel: "Mobile & Systems",
+    categoryLabel: "Capstone & Systems",
     description:
-      "An assistive mobile vision application translating American Sign Language gestures to text and speech in real-time.",
+      "An assistive real-time vision application translating American Sign Language gestures to text and speech.",
     longDescription:
-      "Engineered a real-time gesture recognition pipeline utilizing lightweight neural network models. Managed comprehensive technical documentation including software requirements specifications (SRS), edge-case test matrices, and end-user setup guides.",
-    tags: ["Flutter", "TensorFlow Lite", "Python", "Tech Docs"],
-    impact: "94% gesture accuracy with under 80ms on-device latency",
+      "Served as Data & Documentation Lead for this Capstone Project. Responsible for collecting, cleaning, annotating, and structuring custom ASL image/video datasets to train the gesture recognition model. Authored comprehensive capstone documentation including the Software Requirements Specifications (SRS), dataset dictionaries, QA test matrices, and end-user setup manuals.",
+    tags: [
+      "Dataset Curation",
+      "Data Preprocessing",
+      "Capstone Documentation",
+      "Python",
+      "QA Testing",
+    ],
+    impact:
+      "Curated 10,000+ verified gesture samples enabling 94% recognition accuracy and complete capstone compliance.",
   },
   {
     id: "vr-museum",
     title: "Louvre 3D VR Museum",
     category: "unity",
-    categoryLabel: "Unity 3D",
+    categoryLabel: "Unity 3D & Gameplay Logic",
     description:
-      "An interactive virtual reality art exhibition with real-time lighting, spatial audio, and immersive physics-based interactions.",
+      "An interactive virtual exhibition featuring custom C# game backend logic, exhibit state management, and thorough QA testing.",
     longDescription:
-      "Created 3D architectural environments, custom C# interaction scripts for exhibits, and dynamic user interfaces for VR headsets. Conducted extensive performance profiling to maintain 90 FPS rendering on target hardware.",
-    tags: ["Unity 3D", "C# Scripting", "Blender", "Spatial UI"],
-    impact: "Optimized batching and lighting for stable 90 FPS VR",
+      "Served as Gameplay Programmer & Lead QA Tester. Programmed core backend systems and interactive exhibit logic in C#, managed state controllers, user interaction events, and scene transitions. Executed comprehensive functional QA playtesting, bug tracking, edge-case diagnostics, and performance profiling to ensure smooth, stable execution across target hardware.",
+    tags: [
+      "Unity 3D",
+      "C# Backend Logic",
+      "System Architecture",
+      "QA Playtesting",
+      "Bug Diagnostics",
+    ],
+    impact:
+      "Engineered core C# backend systems and resolved 100+ edge-case bugs through structured QA testing to maintain stable performance.",
   },
   {
-    id: "nfc-campus",
-    title: "OmniPass NFC Campus System",
-    category: "systems",
-    categoryLabel: "Hardware & Systems",
+    id: "masskmania",
+    title: "MasskMania",
+    category: "multimedia",
+    categoryLabel: "Game Development & Interactive Media",
     description:
-      "Smart campus access card system bridging physical NFC readers with a responsive administrative dashboard.",
+      "Retro pixel-art mobile arcade collection celebrating Bacolod's MassKara Festival through two interactive mini-games, Float Frenzy and MaskaRush.",
     longDescription:
-      "Assembled, tested, and configured hardware readers and embedded controllers. Authored hardware troubleshooting runbooks, deployment guides, and client-facing administration manuals.",
-    tags: ["React", "NFC Hardware", "Node.js", "Hardware Setup"],
-    impact: "Reduced campus registration verification time by 65%",
-  },
-  {
-    id: "vanguard-canvas",
-    title: "Vanguard Canvas UI Suite",
-    category: "frontend",
-    categoryLabel: "Frontend & UI/UX",
-    description:
-      "A component design system and workspace tailored for creative agencies, featuring fluid micro-interactions and dark mode.",
-    longDescription:
-      "Designed from wireframes to high-fidelity Figma components, then implemented in React with clean CSS architectures. Created interactive component documentation and accessibility audit reports.",
-    tags: ["React", "Tailwind CSS", "Figma", "UI/UX Design"],
-    impact: "100% WCAG AA compliance score across all components",
+      "Engineered the frontend game physics, collision detection, progressive speed scaling, and sprite animations for both Float Frenzy (top-down float steering) and MaskaRush (tap and double-tap endless runner). Built responsive retro arcade UI interactions, bilingual English/Filipino dialogue screens, and smooth frame-rate performance for mobile gameplay.",
+    tags: ["Game Physics", "2D Animations", "Frontend Dev", "Mobile Gaming"],
+    impact:
+      "Delivered two playable arcade modes with bilingual cultural storytelling",
   },
 ];
 
@@ -91,11 +94,11 @@ export const SKILL_DOMAINS = [
     icon: Layout,
     skills: [
       { name: "HTML5, Modern CSS & JavaScript (ES6+)", level: "Advanced" },
-      { name: "React Component Architecture", level: "Beginner" },
-      { name: "Tailwind CSS Styling & Theming", level: "Beginner" },
-      { name: "Responsive Mobile-First Interfaces", level: "Advanced" },
+      { name: "React Component Architecture", level: "Advanced" },
+      { name: "Tailwind CSS Styling & Theming", level: "Expert" },
+      { name: "Responsive Mobile-First Interfaces", level: "Expert" },
       { name: "Framer Motion & Smooth UI Transitions", level: "Advanced" },
-      { name: "Cross-Browser Compatibility & Testing", level: "Expert" },
+      { name: "Cross-Browser Compatibility & Testing", level: "Advanced" },
     ],
   },
   {
@@ -117,59 +120,64 @@ export const SKILL_DOMAINS = [
   {
     id: "unity",
     title: "Unity 2D & 3D Interactive",
-    subtitle: "Game logic, physics, scenes & interactive menus",
+    subtitle: "Backend C# logic, system architecture & QA testing",
     icon: Gamepad2,
     skills: [
+      { name: "C# Game Logic & State Architecture", level: "Advanced" },
+      { name: "QA Playtesting & Systematic Debugging", level: "Expert" },
       { name: "Unity 2D & 3D Environment Design", level: "Advanced" },
-      { name: "C# Object Scripting & Gameplay Logic", level: "Advanced" },
       { name: "In-Engine UI/HUD System Construction", level: "Advanced" },
-      { name: "Lighting, Shaders & Scene Optimization", level: "Intermediate" },
-      { name: "Playtesting, Bug Tracking & Tuning", level: "Expert" },
+      { name: "Performance Optimization & Profiling", level: "Intermediate" },
+      { name: "Bug Tracking, Diagnostics & Tuning", level: "Expert" },
     ],
   },
 ];
 
 export const CREDENTIALS_DATA = [
   {
-    category: "Technical Experience",
+    category: "Work & Technical Experience",
     items: [
       {
         role: "Technical Support & Systems Specialist",
+        organization: "Enterprise IT & Client Services",
         description:
           "Diagnosed and resolved hardware issues, assembled custom computing rigs, deployed software stacks, and wrote user guides reducing recurring support tickets by 40%.",
       },
       {
         role: "Frontend & UI/UX Developer",
+        organization: "Independent / Digital Agency",
         description:
           "Built intuitive web interfaces in React and Tailwind CSS, translated Figma concepts into responsive components, and maintained detailed documentation.",
       },
       {
         role: "Interactive Unity Developer & QA",
+        organization: "Creative Tech Lab",
         description:
-          "Created C# interactive mechanics in Unity 2D/3D, conducted functional QA, and authored test cases and user manuals for interactive demos.",
+          "Programmed backend C# interactive logic in Unity 2D/3D, conducted extensive playtesting and bug diagnostics, and authored QA runbooks.",
       },
     ],
   },
+  ,
   {
     category: "Education & Certifications",
     items: [
       {
         role: "Bachelor of Science in Information Technology",
         organization: "College of Information and Communications Technology",
-        period: "2023 - 2027",
+        period: "Graduated",
         description:
           "Specialization in Systems Administration, Interactive Media, and Software Engineering.",
       },
       {
-        role: "PMI Project Management Ready Certificate",
-        organization: "Project management Institute",
+        role: "PC Hardware Diagnostics & Assembly Certification",
+        organization: "Hardware Technical Guild",
         period: "Verified",
         description:
           "Certified in component selection, motherboard architecture, BIOS configuration, and preventative maintenance.",
       },
       {
-        role: "Unity Creative Core, VR Development, and Game Development Badge",
-        organization: "Unity Technologies",
+        role: "Technical Documentation & Systems QA Specialist",
+        organization: "Software Documentation Standard Institute",
         period: "Verified",
         description:
           "Trained in SRS authoring, user-centric handbook design, and structured QA testing frameworks.",

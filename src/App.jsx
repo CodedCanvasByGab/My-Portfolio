@@ -18,7 +18,6 @@ import {
   Sun,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-
 import { CREDENTIALS_DATA, PROJECTS, SKILL_DOMAINS } from "./data";
 import ProjectModal from "./projectModal";
 
@@ -121,9 +120,7 @@ export default function App() {
         fontFamily:
           "'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
-      className={`min-h-screen transition-colors duration-300 ${
-        isDark ? "bg-[#0B192C] text-slate-100" : "bg-[#F8F9FA] text-[#0B192C]"
-      }`}
+      className={`min-h-screen transition-colors duration-300 ${isDark ? "bg-[#0B192C] text-slate-100" : "bg-[#F8F9FA] text-[#0B192C]"}`}
     >
       {/* HEADER / NAVIGATION BAR */}
       <header
@@ -178,9 +175,7 @@ export default function App() {
                         stiffness: 450,
                         damping: 35,
                       }}
-                      className={`absolute inset-0 rounded-full ${
-                        isDark ? "bg-[#1E3656]" : "bg-slate-200"
-                      }`}
+                      className={`absolute inset-0 rounded-full ${isDark ? "bg-[#1E3656]" : "bg-slate-200"}`}
                     />
                   )}
                 </button>
@@ -303,7 +298,7 @@ export default function App() {
                     <strong
                       className={isDark ? "text-white" : "text-[#0B192C]"}
                     >
-                      Gab!
+                      Gab
                     </strong>
                     . I combine hands-on{" "}
                     <strong>tech support & PC hardware exploration</strong>,
@@ -471,7 +466,7 @@ export default function App() {
                   <p
                     className={`text-xs mt-1 ${isDark ? "text-slate-400" : "text-slate-500"}`}
                   >
-                    Hardware Builds & Repairs
+                    Hardware Builds & Diagnostics
                   </p>
                 </div>
                 <div>
@@ -518,8 +513,8 @@ export default function App() {
                   <p
                     className={`text-sm mt-1 ${isDark ? "text-slate-400" : "text-slate-600"}`}
                   >
-                    Interactive Unity applications, frontend designs, and
-                    hardware/software systems.
+                    Interactive applications, gameplay mechanics, and technical
+                    system implementations.
                   </p>
                 </div>
 
@@ -532,9 +527,9 @@ export default function App() {
                 >
                   {[
                     { id: "all", label: "All" },
-                    { id: "systems", label: "Systems & Hardware" },
+                    { id: "systems", label: "Capstone & Systems" },
                     { id: "unity", label: "Unity 3D" },
-                    { id: "frontend", label: "Frontend & UI" },
+                    { id: "multimedia", label: "Game Dev & Interactive" },
                   ].map((filter) => (
                     <button
                       key={filter.id}
@@ -555,7 +550,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredProjects.map((project) => (
                   <motion.div
                     layout
@@ -763,15 +758,18 @@ export default function App() {
                             >
                               {item.role}
                             </h3>
-                            <span
-                              className={`text-[11px] font-mono px-2 py-0.5 rounded ${
-                                isDark
-                                  ? "bg-[#0B192C] text-[#C8B594]"
-                                  : "bg-slate-100 text-slate-700"
-                              }`}
-                            >
-                              {item.period}
-                            </span>
+                            {/* Conditionally render date only if it exists */}
+                            {item.period && (
+                              <span
+                                className={`text-[11px] font-mono px-2 py-0.5 rounded ${
+                                  isDark
+                                    ? "bg-[#0B192C] text-[#C8B594]"
+                                    : "bg-slate-100 text-slate-700"
+                                }`}
+                              >
+                                {item.period}
+                              </span>
+                            )}
                           </div>
                           <p
                             className={`text-xs font-medium mb-3 ${isDark ? "text-slate-400" : "text-slate-500"}`}
@@ -819,7 +817,11 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="space-y-4 lg:col-span-1">
                   <div
-                    className={`p-6 rounded-2xl border ${isDark ? "bg-[#11223A] border-[#1E3656]" : "bg-white border-slate-200 shadow-sm"}`}
+                    className={`p-6 rounded-2xl border ${
+                      isDark
+                        ? "bg-[#11223A] border-[#1E3656]"
+                        : "bg-white border-slate-200 shadow-sm"
+                    }`}
                   >
                     <div className="flex items-center gap-3 mb-3">
                       <div
@@ -864,7 +866,11 @@ export default function App() {
                   </div>
 
                   <div
-                    className={`p-6 rounded-2xl border ${isDark ? "bg-[#11223A] border-[#1E3656]" : "bg-white border-slate-200 shadow-sm"}`}
+                    className={`p-6 rounded-2xl border ${
+                      isDark
+                        ? "bg-[#11223A] border-[#1E3656]"
+                        : "bg-white border-slate-200 shadow-sm"
+                    }`}
                   >
                     <h4
                       className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-[#C8B594]" : "text-[#856D43]"}`}
@@ -933,7 +939,7 @@ export default function App() {
                             required
                             type="text"
                             name="name"
-                            placeholder="Alex Morgan"
+                            placeholder="Type your name here"
                             className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
                               isDark
                                 ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
@@ -951,7 +957,7 @@ export default function App() {
                             required
                             type="email"
                             name="email"
-                            placeholder="alex@example.com"
+                            placeholder="provide your work or personal email here"
                             className={`w-full px-3.5 py-2.5 rounded-xl text-xs border outline-none ${
                               isDark
                                 ? "bg-[#0B192C] border-[#1E3656] text-white focus:border-[#C8B594]"
